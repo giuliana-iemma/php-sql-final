@@ -1,0 +1,2 @@
+admin@gmail.com pass: admin (usuario administrador que permite acceder a la vista de administrador)
+giu@gmail.com pass: giu (usuario corriente)
