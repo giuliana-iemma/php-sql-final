@@ -38,7 +38,7 @@ $carritoID = $carrito->iniciarCarrito($userID);
                   echo'<li class="precio-carrito">$'.$producto['precio'].'</li>';
                   echo'<li class="cantidad-carrito">'.$producto['cantidad'].'</li>';
                   echo'<li class="total-carrito">Total: '. $totalProducto.'</li>';
-                  echo'<li><a href="index.php?sec=eliminarProdCarrito&id='.$producto['item_id'].'">Eliminar</a></li>';
+                  echo'<li class="btn eliminar-item "><a href="index.php?sec=eliminarProdCarrito&id='.$producto['item_id'].'">Eliminar</a></li>';
               echo'</ul>';
           echo'</article>';
 
