@@ -1,11 +1,8 @@
-<h1>Usuarios</h1>
 <section id="listadoUsuarios">
-
-    <!-- <a class="btn" href="admin.php?sec=createUser">Añadir nuevo usuario</a>     -->
+<h2>Usuarios</h2>
 
     <div>
-
-        <div class="productos">
+        <div class="productos tabla-responsive">
             <table border="1">
             <thead>
                 <tr>
@@ -24,7 +21,6 @@
 
                 $usuario = new Usuario ();
 
-
                 //Obtengo todos los productos y los almaceno en la variable filas
                 $filas = $usuario->readAll();
 
@@ -41,7 +37,6 @@
                         
                         echo '<td>';
                             echo'<div class="list-btn">';
-                                // echo '<a class="btn btn-slim" href="index.php?sec=detalle&id='. $id.'"><span>Ver card</span></a>';
                                 echo '<a class="btn btn-slim " href="admin.php?sec=updateUsuarios&id='. $id.'">Modificar</a>';
                                 echo '<a class="btn btn-slim warn"  href="admin.php?sec=deleteUsuarios&id='. $id.'">Eliminar</a>';
                             echo '</div>';

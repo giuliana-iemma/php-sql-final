@@ -1,4 +1,6 @@
-<h2>Create</h2>
+<section>
+
+<h2>Agregar nuevo producto</h2>
 
 <?php
 include_once 'clases/Productos.php';
@@ -40,8 +42,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         <legend>Categorías: </legend>
         <?php
             foreach ($categorias as $categoria){
+                echo '<div class="list-checkbox">';
+                 
+                echo '<input class="list-checkbox__checkbox" type="checkbox" id="'. strtolower($categoria['categoria'] ).'" value="'. $categoria['id'] .'" name="categoria[]">';
+
                 echo '<label for="'. strtolower($categoria['categoria'] ).'"> '. $categoria['categoria'] .' </label>';
-                echo '<input type="checkbox" id="'. strtolower($categoria['categoria'] ).'" value="'. $categoria['id'] .'" name="categoria[]">';
+
+                echo '</div>';
+
             }
         ?>
     </fieldset>
@@ -58,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     <label>Stock</label>
     <input type="number" name="stock" value=3>
     
-    <input type="submit" value="Agregar">
+    <input class="btn formulario-usuario__btn" type="submit" value="Agregar">
+    <a class="btn alternativa-usuario__btn" href="admin.php">Volver a productos</a>
+
 </form>
 
-<a href="admin.php">Volver</a>
+</section>

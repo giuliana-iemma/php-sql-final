@@ -9,6 +9,9 @@ $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Registro no encontrado');
 
 //Elimino el artículo
 if ($producto->delete($id)) {
+    //Chequeo pre eliminación
+
+    
     header ("Location: admin.php");
 
     //Detengo la ejecución

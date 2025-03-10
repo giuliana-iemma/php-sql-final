@@ -1,6 +1,3 @@
-<?php
-
-?>
 <section id="carrito">
 <h1>Carrito de compras</h1>
 <?php
@@ -45,13 +42,17 @@ $carritoID = $carrito->iniciarCarrito($userID);
               echo'</ul>';
           echo'</article>';
 
-          echo '<div class="carrito-total">';
-          echo '<a class="btn" href="index.php?sec=pago&userID='.$userID.'&carritoID='.$carritoID.'">Pagar</a>';
-
-            echo '<p>Total: $'. $totalCarrito.'</p>';
+        
             $carrito->cargarTotal($totalCarrito, $carritoID, $userID);
-        echo '</div>';
       }
+
+      echo '<div class="carrito-total">';
+      echo '<a class="btn" href="index.php?sec=pago&userID='.$userID.'&carritoID='.$carritoID.'">Pagar</a>';
+
+      echo '<p>Total: $'. $totalCarrito.'</p>';
+
+      echo '</div>';
+
       echo'</section>';
     } else{
       echo '<p>El carrito está vacío</p>';
@@ -91,7 +92,5 @@ $carritoID = $carrito->iniciarCarrito($userID);
     $carritoItems = [];
     
   } 
-
-    
 ?>
 

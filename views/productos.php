@@ -5,8 +5,8 @@
 
 <section id="catalogoCompleto">
 
-<div class="navTags">
-    <ul>
+<div>
+    <ul class="navTags navTags--center">
     <li><a class="<?= (isset($_GET['cat']) && $_GET['cat'] == 1) ? 'active' : '' ?>" href="index.php?sec=filtrados&cat=1">Café</a></li>
         <li><a class="<?= (isset($_GET['cat']) && $_GET['cat'] == 2) ? 'active' : '' ?>" href="index.php?sec=filtrados&cat=2">Pastelería</a></li>
         <li><a class="<?= (isset($_GET['cat']) && $_GET['cat'] == 5) ? 'active' : '' ?>" href="index.php?sec=filtrados&cat=5">Cápsulas</a></li>
@@ -15,8 +15,8 @@
         <li><a class="<?= (!isset($_GET['cat'])) ? 'active' : '' ?>" href="index.php?sec=productos">Ver todos</a></li>       
     </ul>
 </div>
-    </ul>
-</div>
+
+
 
     <h2>Todos los productos</h2>
 
@@ -28,7 +28,8 @@
 
     echo '
     <div>
-        <div class="productos">';
+        <div class="productos productos--lista">';
+
     while ($row = $filas->fetch(PDO::FETCH_ASSOC)) {
         extract ($row);
         
@@ -49,7 +50,7 @@
                 echo '</div>';
                 echo '<p class="precio">$ ' . $precio . '</p>';
                 //Pongo action=add para que esto suceda solo cuando se intente agregar un prod al carrito
-                echo '<a class="btn" href="index.php?sec=carrito&accion=agregar&id='.$id.'"><span>Comprar</span></a>';
+                echo '<a class="btn" href="index.php?sec=carrito&accion=agregar&id='.$id.'"><span>Agregar al carrito</span></a>';
 
             echo '</div>';
             echo '</article>';

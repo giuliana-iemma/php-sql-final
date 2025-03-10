@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ //Si recibe por POST
    //Actualizo el producto en la ddbb
     $producto->update($id, $nombre, $descripcion, $precio, $stock ,$imagen, $categorias_checked);
 
+    header ("Location: admin.php?sec=productosAll");
+
 } else { //Recibe por GET
     $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: REGISTRO NO ENCONTRADO'); //Busco el artículo en la ddbb acorde al id obtenido en el URL
 
@@ -54,9 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ //Si recibe por POST
         <legend>Categorías: </legend>
         <?php
             foreach ($categoriasDisponibles as $categoria) {
-                echo '<label for="' . strtolower($categoria['categoria']) . '"> ' . $categoria['categoria'] . ' </label>';
-                echo '<input type="checkbox" id="' . strtolower($categoria['categoria']) . '" value="' . $categoria['id'] . '" name="categoria[]" ' . 
+                echo '<div class="list-checkbox">'; 
+                
+                echo '<input class="list-checkbox__checkbox" type="checkbox" id="' . strtolower($categoria['categoria']) . '" value="' . $categoria['id'] . '" name="categoria[]" ' . 
+
                 (in_array($categoria['id'], $categorias_checked) ? 'checked' : '') . '>';
+
+                echo '<label for="' . strtolower($categoria['categoria']) . '"> ' . $categoria['categoria'] . ' </label>';
+               
+                echo '</div>';
             }
         ?>
     </fieldset>
@@ -70,5 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ //Si recibe por POST
     <label>Stock</label>
     <input type="number" name="stock" value=<?php echo $stock ?>>
     
-    <input type="submit" value="Actualizar">
+    <input class="btn formulario-usuario__btn" type="submit" value="Actualizar">
+    <a class="btn alternativa-usuario__btn" href="admin.php">Volver a productos</a>
+
 </form>

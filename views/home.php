@@ -2,7 +2,7 @@
 <div id="banner">
     <h1><span>Maldito</span></h1>
     <p>Vení a Maldito a disfrutar de una rica merienda!</p>
-    <a class="btn cta" href="index.php?sec=contacto">Reservar</a>
+    <a class="btn btn--light" href="index.php?sec=contacto">Reservar</a>
 </div>
 
 
@@ -23,19 +23,25 @@
         <article class="cardCategoria">
             <h3>Café</h3>
             
-            <a href="index.php?sec=filtrados&cat=1"><img src="./img/cafe/capuchino-ice.jpg" alt="Capuchino helado"></a>
+            <a href="index.php?sec=filtrados&cat=1">
+                <img src="./img/iconos/cafe.png" alt="Café">
+            </a>
         </article>
 
         <article class="cardCategoria">
             <h3>Pastelería</h3>
             
-            <a href="index.php?sec=filtrados&cat=2"><img src="./img/comida/cheese-cake.jpg" alt="Cheese Cake"></a>
+            <a href="index.php?sec=filtrados&cat=2">
+                <img src="./img/iconos/pan.png" alt="Pastelería">
+            </a>
         </article>
 
         <article class="cardCategoria">
    
     <h3>Cápsulas</h3>
-        <a href="index.php?sec=filtrados&cat=5"><img src="./img/molido/brazil.jpg" alt="Bolsa de café molido"></a>
+        <a href="index.php?sec=filtrados&cat=5">
+            <img src="./img/iconos/capsulas.png" alt="Cápsulas">
+        </a>
     </article>
     </div>
 </section>

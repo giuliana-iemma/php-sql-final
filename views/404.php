@@ -13,7 +13,7 @@ echo'
 
 <h2>Lo sentimos mucho</h2>
 <p>En este momento la web se encuentra en mantenimiento.</p>
-<a href=../>Volver al intentar</a>
+<a href="index.php">Volver al intentar</a>
 
 </section>
 ';

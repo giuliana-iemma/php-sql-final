@@ -54,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <option <?php echo ($fk_rol == 2) ?  "selected" :  "" ; ?> value="2">Cliente</option>
 
     </select>
-    <button type="submit" value="Actualizar">Actualizar</button>
+    <button class="btn formulario-usuario__btn" type="submit" value="Actualizar">Actualizar</button>
+
+    <a class="btn alternativa-usuario__btn" href="admin.php?sec=usuarios">Volver a usuarios</a>
+
 </form>
 

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <div class="container">
+  <div class="contenedor">
 
    <?php require_once ('views/nav.php') ?>
         
@@ -32,7 +32,7 @@
             $seccion = isset($_GET ['sec']) ? $_GET['sec'] : 'home';
 
             // Proporciono una lista de variables válidas para evitar que el usuario pueda cargar otras vistas 
-            $secciones_validas = ['home', 'formulario','locales', 'contacto', 'productos', 'productosAll', 'detalle', 'filtrados', 'login', 'register','carrito', 'logout','eliminarProdCarrito', 'pago'];
+            $secciones_validas = ['home', 'formulario','locales', 'contacto', 'productos', 'productosAll', 'detalle', 'filtrados', 'login', 'register','carrito', 'logout','eliminarProdCarrito', 'pago', 'ordenes', 'orden'];
 
             // in_array() comprueba si existe un valor en el array 
             if (!in_array($seccion, $secciones_validas)){

@@ -159,7 +159,7 @@ class Producto
                     var_dump($stmt_categoria->errorInfo()); // Verifica si hay errores en la consulta
                     return false;
                 } else {
-                    echo 'Realizado el cambio de categorias';
+                    return true;
                 }                            
                 }
 

@@ -24,7 +24,7 @@ class Carrito
         
         //CONSULTA
         //Accedo a la tabla carritos y selecciono solo la información de los carritos que coincidan con el id del usuario y que aún no se haya concretado la compra
-        $query = "SELECT id FROM carritos WHERE fk_user_id = :userID AND fk_estado = 'en curso'"; 
+        $query = "SELECT id FROM carritos WHERE fk_user_id = :userID AND fk_estado = 1"; 
 
         //PREPARO
         $stmt = $this->conn->prepare ($query);
@@ -39,7 +39,7 @@ class Carrito
                 return $row['id'];
                 //Obtengo el ID del carrito para poder mostrar luego lo que hay dentro vinculando con la tabla carrito_items
             } else {
-                $carritoEstado = "en curso";
+                $carritoEstado = 1;
                 //Creo un nuevo carrito
                 //CONSULTA: insertar en la tabla carrito los valores
                 $query = "INSERT INTO carritos (fk_user_id, fk_estado) VALUES (:userID, :carritoEstado)";
@@ -69,13 +69,12 @@ class Carrito
     }
 
     public function obtenerCarrito($userID){
-        $query = "SELECT id FROM carritos WHERE fk_user_id = :userID AND fk_estado = 'en curso'"; 
+        $query = "SELECT id FROM carritos WHERE fk_user_id = :userID AND fk_estado = 1"; 
 
         $stmt = $this->conn->prepare ($query);
         $stmt->bindParam(':userID', $userID);
         if($stmt->execute()){
             return $stmt;
-
         };
 
     }
@@ -170,9 +169,19 @@ class Carrito
         }    
     }
 
-    public function vaciarCarrito()
+    public function vaciarCarrito($carritoID)
     {
+        
+        $query = "DELETE FROM carrito_items WHERE fk_carrito_id = :carritoID";
 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':carritoID', $carritoID);
+        if($stmt->execute()){
+            return true;
+        } else {
+            echo ' error al vaciar carrito';
+            return false;
+        }
     }
 
     public function cargarTotal($total, $carritoID, $userID)
@@ -184,5 +193,20 @@ class Carrito
         $stmt->bindParam(':carritoID', $carritoID);
         $stmt->bindParam(':userID', $userID);
         $stmt->execute();
+    }
+
+    public function obtenerOrden($carritoID){
+        $query = "SELECT o.* /* Seleccionamos todo de la tabla ordenes */
+                FROM ordenes o 
+                JOIN carritos c ON o.carrito_fk = c.id /* Unimos con la tabla carritos en la columna carrito_fk que tendrá el dato del id del carrito */
+                WHERE c.id = :carritoID "; /* Siempre que el carrito del ID sea determinado */
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':carritoID', $carritoID);
+        $stmt->execute();
+        
+        $orden = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $orden['orden_id']; // Devuelve solo el ID de la orden
     }
 }

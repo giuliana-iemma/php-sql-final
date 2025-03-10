@@ -1,9 +1,10 @@
-<h1>Productos</h1>
 <section id="catalogoCompleto">
-    <a class="btn" href="admin.php?sec=create">Añadir nuevo producto</a>
-    <div>
+<h2>Productos</h2>
 
-        <div class="productos">
+    <a class="btn" href="admin.php?sec=create">Añadir nuevo producto</a>
+
+    <div>
+        <div class="productos tabla-responsive">
             <table border="1">
             <thead>
                 <tr>
@@ -38,6 +39,7 @@
                         echo '<td>' . $stock . '</td>';
 
                         echo '<td>' . $descripcion . '</td>';
+                        
                         echo '<td> 
                                 <ul>';
                                 foreach($categorias as $categoria){
@@ -45,10 +47,9 @@
                                 } 
                         echo '</ul>
                             </td>';
-                            // echo '<td>.' $stock ' .</td>';
+
                         echo '<td>';
                             echo'<div class="list-btn">';
-                                // echo '<a class="btn btn-slim" href="index.php?sec=detalle&id='. $id.'"><span>Ver card</span></a>';
                                 echo '<a class="btn btn-slim " href="admin.php?sec=update&id='. $id.'">Modificar</a>';
                                 echo '<a class="btn btn-slim warn"  href="admin.php?sec=delete&id='. $id.'">Eliminar</a>';
                             echo '</div>';
