@@ -66,6 +66,8 @@ class Usuario
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['rol'] = $row['fk_rol'];
+
+                var_dump($_SESSION);
                 return true;
             } else {
                 return false;

@@ -47,8 +47,12 @@
                     echo '<li class="dropdown-item"><a class="nav-link" href="admin.php">Administrar</a></li>';
                 } 
                 echo '</ul>';
+                echo '</li>';
+
+            } else {
+                echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php?sec=login">Iniciar sesión</a></li>
+';
             }
-            echo '</li>';
                 ?>
               
               <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php?sec=home">Inicio</a></li>

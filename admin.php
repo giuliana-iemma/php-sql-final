@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,6 +13,8 @@
 </head>
 <body>
 
+<?php session_start(); ?>
+
 <header >
         <nav id="nav-admin">
                 <ul class="navTags">
@@ -19,6 +22,11 @@
                         <li><a href="admin.php?sec=usuarios">Usuarios</a></li>
                         <li><a href="admin.php?sec=ordenes">Ordenes</a></li>
                         <li><a class="btn-vista" href="index.php">Vista Usuario</a></li>
+                        <?php 
+                        if(isset($_SESSION['email'])) {
+                                echo '<li><a href="index.php?sec=logout">Cerrar sesión</a></li>';
+                        }
+                        ?>
                 </ul>
         </nav>
 </header>
@@ -30,6 +38,21 @@
         <h1>Administrar</h1>
 
         <?php
+        //  var_dump($_SESSION);
+
+         if (isset($_SESSION['rol'])) {  
+                if ($_SESSION['rol'] != '1') {
+                     // No es admin, acceso denegado
+                     echo 'Acceso denegado. No tienes permiso para acceder a esta área.';
+                     // Redirigir al usuario si es necesario
+                     header("Location: index.php?sec=forbidden");
+                }
+            } else {
+                echo 'No has iniciado sesión. Por favor, inicia sesión para continuar.';
+                header("Location: index.php?sec=forbidden");
+            }
+
+
                 $seccion_admin = isset($_GET ['sec']) ? $_GET ['sec'] : 'productosAll';
 
                 $secciones_validas_admin = ['create', 'productosAll', 'update', 'delete', 'usuarios', 'updateUsuarios', 'ordenes', 'editarOrden'];

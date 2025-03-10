@@ -38,7 +38,7 @@
                         echo '<td>';
                             echo'<div class="list-btn">';
                                 echo '<a class="btn btn-slim " href="admin.php?sec=updateUsuarios&id='. $id.'">Modificar</a>';
-                                echo '<a class="btn btn-slim warn"  href="admin.php?sec=deleteUsuarios&id='. $id.'">Eliminar</a>';
+                               /*  echo '<a class="btn btn-slim warn"  href="admin.php?sec=deleteUsuarios&id='. $id.'">Eliminar</a>'; */
                             echo '</div>';
                         echo '</td>';
                 }
