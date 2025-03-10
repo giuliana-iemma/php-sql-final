@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2025 at 04:01 AM
+-- Generation Time: Mar 10, 2025 at 06:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,11 @@ INSERT INTO `carritos` (`id`, `fk_user_id`, `created_at`, `fk_estado`, `total`) 
 (17, 15, '2025-03-06 03:16:34', 2, 213.00),
 (18, 15, '2025-03-06 03:26:39', 2, 23213.00),
 (19, 15, '2025-03-10 02:20:49', 2, 213.00),
-(20, 15, '2025-03-10 02:41:20', 2, 213.00);
+(20, 15, '2025-03-10 02:41:20', 2, 213.00),
+(21, 16, '2025-03-10 04:31:09', 2, 2500.00),
+(22, 17, '2025-03-10 04:37:52', 2, 23213.00),
+(23, 17, '2025-03-10 04:37:59', 2, 0.00),
+(24, 17, '2025-03-10 04:38:12', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,6 +81,13 @@ CREATE TABLE `carrito_items` (
   `fk_producto_id` int(11) UNSIGNED NOT NULL,
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carrito_items`
+--
+
+INSERT INTO `carrito_items` (`item_id`, `fk_carrito_id`, `fk_producto_id`, `cantidad`) VALUES
+(73, 21, 37, 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +137,9 @@ INSERT INTO `ordenes` (`orden_id`, `fk_user_id`, `precio_total`, `estado_fk`, `c
 (63, 15, 213.00, 2, 17, '2025-03-06 03:16:35'),
 (64, 15, 23213.00, 2, 18, '2025-03-10 01:11:57'),
 (65, 15, 213.00, 1, 19, '2025-03-10 02:20:50'),
-(66, 15, 213.00, 2, 20, '2025-03-10 02:42:16');
+(66, 15, 213.00, 2, 20, '2025-03-10 02:42:16'),
+(67, 17, 23213.00, 2, 22, '2025-03-10 04:37:53'),
+(68, 17, 0.00, 4, 23, '2025-03-10 04:38:00');
 
 -- --------------------------------------------------------
 
@@ -172,7 +185,9 @@ INSERT INTO `ordenes_items` (`orden_item_id`, `fk_orden_id`, `fk_producto_id`, `
 (60, 63, 9, 1, 213.00),
 (61, 64, 10, 1, 23213.00),
 (62, 65, 9, 1, 213.00),
-(63, 66, 9, 1, 213.00);
+(63, 66, 9, 1, 213.00),
+(64, 67, 10, 1, 23213.00),
+(65, 68, 11, 1, 0.00);
 
 -- --------------------------------------------------------
 
@@ -194,9 +209,9 @@ CREATE TABLE `productos_bar` (
 --
 
 INSERT INTO `productos_bar` (`id`, `nombre`, `descripcion`, `imagen`, `precio`, `stock`) VALUES
-(9, 'Tiramisu', 'desc', 'comida/tiramisu.jpg', 213, 10),
+(9, 'Tiramisu', 'El tiramisú es un postre italiano clásico, delicioso y cremoso, compuesto por capas de bizcochos empapados en café, intercalados con una suave mezcla de queso mascarpone, huevos y azúcar. Su toque final de cacao en polvo le da un sabor único, equilibrando la suavidad y el toque amargo del café. Un verdadero placer para los amantes de los postres.', 'comida/tiramisu.jpg', 213, 10),
 (10, 'Cheese Cake', 'Con una base bien humeda y un relleno suave y crem', 'comida/cheese-cake.jpg', 23213, 3123),
-(11, 'Croissant', 'Delicadamente hojaldrado y dorado, nuestro croissa', '10', 0, 1100),
+(11, 'Croissant', 'Delicadamente hojaldrado y dorado, nuestro croissant', 'comida/croissant.jpg', 0, 1100),
 (15, 'Iced Flat', 'Café helado intenso con leche vaporizada para una experiencia suave y deliciosa.\"', 'cafe/capuchino-ice.jpg', 1050, 100),
 (18, 'Capucchino Ice', 'Una versión fresca y deliciosa del clásico capuchino. Espres}o suave, leche vaporizada un toque de chocolate y canela, adornado con una capa de espuma cremosa', 'cafe/capuchino-ice.jpg', 1350, 100),
 (36, 'Cupcake', 'Un cupcake esponjoso y suave, adornado con una generosa porción de crema de vainilla. Este dulce clásico es perfecto para satisfacer antojos con su delicado sabor a vainilla y su presentación encantadora.', 'comida/cup-cake.jpg', 1800, 10),
@@ -204,10 +219,10 @@ INSERT INTO `productos_bar` (`id`, `nombre`, `descripcion`, `imagen`, `precio`, 
 (38, 'Café Negro', 'Una clásica mezcla de espresso robusto y agua caliente. Perfecto para los amantes del café fuerte.', 'cafe/coffee.jpg', 1250, 100),
 (39, 'Latte', 'Una deliciosa combinación de espresso suave con leche vaporizada, coronada con una capa de espuma sedosa.', 'cafe/latte.jpg', 2300, 100),
 (40, 'Capuchino', 'Mezcla armoniosa de espresso intenso, leche vaporizada y espuma cremosa, con toque de chocolate y canela.', 'cafe/capuchino.jpg', 3000, 1000),
-(45, 'Aurora ', 'Un espresso vibrante y afrutado con notas de frutos rojos y un toque cítrico. Ideal para quienes buscan un café ligero pero con carácter.', 'capsulas/1.jpg', 5000, 10),
-(46, 'Nocturno ', 'Intenso y profundo, con notas de cacao amargo, nueces tostadas y un final especiado. Perfecto para los amantes del café fuerte y robusto.', 'capsulas/1.jpg', 3455, 10),
-(47, 'Dulce Alba', 'Suave y equilibrado, con notas de caramelo, vainilla y un toque de almendra. Un café envolvente y cremoso.', 'capsulas/1.jpg', 3656, 10),
-(48, 'Brisa Andina', 'Un blend con cuerpo medio, notas de chocolate con leche y un ligero aroma floral. Fresco y armonioso.', 'capsulas/1.jpg', 5658, NULL);
+(45, 'Aurora ', 'Un espresso vibrante y afrutado con notas de frutos rojos y un toque cítrico. Ideal para quienes buscan un café ligero pero con carácter.', 'capsulas/2.jpg', 5000, 10),
+(46, 'Nocturno ', 'Intenso y profundo, con notas de cacao amargo, nueces tostadas y un final especiado. Perfecto para los amantes del café fuerte y robusto.', 'capsulas/3.jpg', 3455, 10),
+(47, 'Dulce Alba', 'Suave y equilibrado, con notas de caramelo, vainilla y un toque de almendra. Un café envolvente y cremoso.', 'capsulas/4.jpg', 3656, 10),
+(48, 'Brisa Andina', 'Un blend con cuerpo medio, notas de chocolate con leche y un ligero aroma floral. Fresco y armonioso.', 'capsulas/5.jpg', 5658, NULL);
 
 -- --------------------------------------------------------
 
@@ -387,7 +402,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `carritos_estado`
@@ -399,7 +414,7 @@ ALTER TABLE `carritos_estado`
 -- AUTO_INCREMENT for table `carrito_items`
 --
 ALTER TABLE `carrito_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `categorias`
@@ -411,7 +426,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `ordenes`
 --
 ALTER TABLE `ordenes`
-  MODIFY `orden_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `orden_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `ordenes_estados`
@@ -423,7 +438,7 @@ ALTER TABLE `ordenes_estados`
 -- AUTO_INCREMENT for table `ordenes_items`
 --
 ALTER TABLE `ordenes_items`
-  MODIFY `orden_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `orden_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `productos_bar`
